@@ -1,102 +1,205 @@
-<!doctype html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Design System for Bootstrap 4.">
+    <meta name="author" content="Rohit Sharma">
+    <title>CYBERPUNK Table Detection Demo Rohit Sharma</title>
+    <!-- Favicon -->
+    <link href="/assets/img/brand/favicon.png" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- Icons -->
+    <link href="/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Argon CSS -->
+    <link type="text/css" href="/assets/css/argon.css?v=1.0.1" rel="stylesheet">
+    <!-- Docs CSS -->
+    <link type="text/css" href="/assets/css/docs.min.css" rel="stylesheet">
+</head>
 <style>
     /* Center the loader */
 #loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid rgb(187,0,87);
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+position: absolute;
+left: 50%;
+top: 50%;
+z-index: 1;
+width: 150px;
+height: 150px;
+margin: -75px 0 0 -75px;
+border: 16px solid #f3f3f3;
+border-radius: 50%;
+border-top: 16px solid rgb(187, 59, 0);
+width: 120px;
+height: 120px;
+-webkit-animation: spin 2s linear infinite;
+animation: spin 2s linear infinite;
 }
 
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+0% { -webkit-transform: rotate(0deg); }
+100% { -webkit-transform: rotate(360deg); }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
 }
+</style>
+
+<body>
+    <header class="header-global">
+        <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
+            <div class="container">
+                <a class="navbar-brand mr-lg-6" href="">
+                    <img src="/assets/img/brand/white.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+                    aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="navbar_global">
+                    <div class="navbar-collapse-header">
+                        <div class="row">
+                            <div class="col-6 collapse-brand">
+                                <a href="">
+                                    <img src="/assets/img/brand/blue.png">
+                                </a>
+                            </div>
+                            <div class="col-6 collapse-close">
+                                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global"
+                                    aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
+                                <i class="ni ni-ui-04 d-lg-none"></i>
+                                <span class="nav-link-inner--text">Built by Rohit Sharma, TEAM: CYBERPUNK</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                        <li class="nav-item d-none d-lg-block ml-lg-4">
+                            <a href="" target="_blank" class="btn btn-darker btn-icon">
+
+                                <span class="nav-link-inner--text">Team CYBERPUNK</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="loader" style="display:none;"></div>
+    <main class="profile-page">
+        <section class="section-profile-cover section-shaped my-0">
+            <!-- Circles background -->
+            <div class="shape shape-style-1 shape-primary alpha-4">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- SVG separator -->
+            <div class="separator separator-bottom separator-skew">
+                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="card card-profile shadow mt--300">
+                    <div class="px-4">
+                        <div class="text-center mt-5">
+                            <h3>Axis Bank AI Hackathon | Table Detection Demo using Mask-RCNN
+                            </h3>
+                            <div class="h6 mt-3"><i class="ni location_pin mr-2"></i>Team: CYBERPUNK | Name: Rohit
+                                Sharma | Theme: Table Reading &
+                                Understanding in
+                                Documents/Images </div>
+                        </div>
+                        <div class="mt-2 py-5 border-top text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-9">
+                                    <h1 align="center"></h1><br>
 
 
-    h1{
-        color:rgb(0, 6, 187);
-    }
-    body {
-  font-family: Sans-serif;
-}
-    div {
-    width: 600px;
-    height: 600px;
-    background-color: white;
-
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    margin: auto;
-}
-    .card {
-            box-shadow: 0 10px 30px 0 rgba(0, 0, 187, 0.2);
-            transition: 0.3s;
-            width: 45%;
-        }
-        
-        .card:hover {
-            box-shadow: 0 10px 30px 0 rgba(28, 0, 187, 0.7);
-        }
-        
-        .container {
-            padding: 0px 16px;
-        }
-        </style>
-<title>AXIS Table Detection Demo</title>
-<br>
-<br>
-<div id="loader" style="display:none;"></div>
-<div class="card">
-    <div class="container">
-        <h1 align="center">AXIS AI Hackathon </h1><br><h1 align="center"> Table Detection Demo</h1>
-       
-
-        <h4 id="test1">Team: Cyberpunk<br>
-            Name: Rohit Sharma<br>
-            Mobile: 9762450616<br>
-            Theme: Table Reading & Understanding in Documents/Images<br>
-            </h4>
+                                    <form method=post enctype=multipart/form-data> <input type=file name=file>
+                                        <input type=submit value=Upload>
+                                    </form>
+                                    <!-- <form action="/table-web" method=post enctype=multipart/form-data id="form">
+                      <input type="file" id="filePicker" name=file accept=".jpg,.pdf,.PDF,.JPG" />
+          
+                      <input type="submit" value="Upload" />
+                  </form> -->
+                                    <br><br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row row-grid align-items-center mb-5">
+                <div class="col-lg-12">
+                    <h4 class="mb-2 font-weight-light">Upload .PDF or .JPG files containing tables to get an output
+                        .XLSX file
+                        &
+                        table
+                        regions</h4>
+                    <h5>Github repo contains model files, code & instructions
+                        <a href="https://www.github.com/gerald2077/axis-table">github.com/Gerald2077/axis-table</a></h5>
+                </div>
+                </a>
+            </div>
+        </div>
         <hr>
-        <form method=post enctype=multipart/form-data> <input type=file name=file>
-            <input type=submit value=Upload>
-        </form>
-        <!-- <form action="/table-web" method=post enctype=multipart/form-data id="form">
-            <input type="file" id="filePicker" name=file accept=".jpg,.pdf,.PDF,.JPG" />
+        <div class="row align-items-center justify-content-md-between">
+            <div class="col-md-6">
+                <div class="copyright">
+                    &copy; 2018
+                    <a href="" target="_blank">Rohit Sharma, Team CYBERPUNK</a>.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="nav nav-footer justify-content-end">
+                    <li class="nav-item">
+                        <a href="" class="nav-link" target="_blank">Rohit Sharma</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </footer>
+    <!-- Core -->
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/popper/popper.min.js"></script>
+    <script src="/assets/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/vendor/headroom/headroom.min.js"></script>
+    <!-- Argon JS -->
+    <script src="/assets/js/argon.js?v=1.0.1"></script>
+    <!-- <script src="assets/jquery.js"></script> -->
+    <script>
 
-            <input type="submit" value="Upload" />
-        </form> -->
-        <br><br><br>
-        My Github repo contains the model file link, code and instructions
-        <a href="https://www.github.com/gerald2077/axis-table">github.com/Gerald2077/axis-table</a>
-    </div>
-</div>
-
-<script src="js/jquery.js"></script>
-<script>
-
-    $("#form").submit(function (event) {
-                    form.submit();
+        $("#form").submit(function (event) {
+            form.submit();
         }
-    );
-</script>
+        );
+    </script>
+</body>
+
+</html>

@@ -17,9 +17,9 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route('/js/<path:path>')
+@app.route('/assets/<path:path>')
 def send_js(path):
-    return send_from_directory('js', path)
+    return send_from_directory('assets', path)
 
 
 @app.route('/', methods=['GET', 'POST'])
