@@ -6,3 +6,4 @@ mrcnn
 tensorflow
 scikit-image
 pandas
+keras
