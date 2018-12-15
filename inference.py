@@ -8,7 +8,7 @@ import time
 import numpy as np
 import tensorflow as tf
 import matplotlib
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import skimage
 import glob
@@ -64,7 +64,7 @@ def get_ax(rows=1, cols=1, size=16):
     
     Adjust the size attribute to control how big to render images
     """
-    _, ax = plt.subplots(rows, cols, figsize=(size*cols, size*rows))
+    # _, ax = plt.subplots(rows, cols, figsize=(size*cols, size*rows))
     return ax
 
 

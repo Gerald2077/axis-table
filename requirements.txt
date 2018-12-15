@@ -3,4 +3,4 @@ opencv-python==3.4.2.16
 Pillow==5.1.0
 pytesseract==0.2.2
 mrcnn
-tensorflow
+# tensorflow
