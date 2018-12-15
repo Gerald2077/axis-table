@@ -5,7 +5,7 @@ import subprocess
 import re
 # the all-important app variable:
 UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'uploads')
-ALLOWED_EXTENSIONS = set(['jpg'])
+ALLOWED_EXTENSIONS = set(['jpg','pdf'])
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
