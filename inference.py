@@ -12,7 +12,9 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import skimage
 import glob
-
+import pytesseract
+from PIL import Image
+import pandas as pd
 # Root directory of the project
 ROOT_DIR = os.getcwd()
 
@@ -26,12 +28,12 @@ from mrcnn.model import log
 
 import custom 
 
-matplotlib inline 
+
 
 # Directory to save logs and trained model
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 
-custom_WEIGHTS_PATH = "/logs/mask_rcnn_table_0010.h5"  # TODO: update this path if needed
+custom_WEIGHTS_PATH = "./logs/mask_rcnn_table_0003.h5"  # TODO: update this path if needed
 config = custom.CustomConfig()
 custom_DIR = os.path.join(ROOT_DIR, "customImages")
 # Override the training configurations with a few
@@ -73,7 +75,7 @@ dataset.load_custom(custom_DIR, "val")
 # Must call before using the dataset
 dataset.prepare()
 
-print("Images: {}\nClasses: {}".format(len(dataset.image_ids), dataset.class_names))
+# print("Images: {}\nClasses: {}".format(len(dataset.image_ids), dataset.class_names))
 
 
 # Create model in inference mode
@@ -86,7 +88,7 @@ with tf.device(DEVICE):
 # weights_path = model.find_last()[1]
 
 # Load weights
-print("Loading weights ", custom_WEIGHTS_PATH)
+# print("Loading weights ", custom_WEIGHTS_PATH)
 model.load_weights(custom_WEIGHTS_PATH, by_name=True)
 
 
@@ -94,21 +96,51 @@ image_id = random.choice(dataset.image_ids)
 image, image_meta, gt_class_id, gt_bbox, gt_mask =\
     modellib.load_image_gt(dataset, config, image_id, use_mini_mask=False)
 info = dataset.image_info[image_id]
-print("image ID: {}.{} ({}) {}".format(info["source"], info["id"], image_id, 
-                                       dataset.image_reference(image_id)))
+# print("image ID: {}.{} ({}) {}".format(info["source"], info["id"], image_id, 
+                                    #    dataset.image_reference(image_id)))
 
 # Run object detection
+image = skimage.io.imread("test.jpg")
 results = model.detect([image], verbose=1)
 
 # Display results
 ax = get_ax(1)
 r = results[0]
-visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
-                            dataset.class_names, r['scores'], ax=ax,
-                            title="Predictions")
-log("gt_class_id", gt_class_id)
-log("gt_bbox", gt_bbox)
-log("gt_mask", gt_mask)
+
+for bbox in r['rois']:
+
+    # print(bbox)
+    x1 = int(bbox[1])
+    y1 = int(bbox[0])
+    x2 = int(bbox[3])
+    y2 = int(bbox[2])
+    cv2.rectangle(image, (x1,y1), (x2,y2), (0, 0, 0), 0, 1)
+    width = x2 - x1 
+    height = y2 - y1 
+    # print("x {} y {} h {} w {}".format(x1, y1, width, height))
+    # crop_img = image[y1:y1+height, x1:x1+width]
+    crop_img = image[y1:y2, x1:x2]
+    cv2.imshow("cropped", crop_img)
+    cv2.imwrite('01.png',crop_img)
+    string= pytesseract.image_to_string(Image.open("01.png"), config="-c tessedit_char_whitelist=0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/ -psm 4")
+    print(string)
+    print("END")
+    list_strings = string.splitlines()
+    df = pd.DataFrame(list_strings)
+    # df.replace('  ', np.nan, inplace=True)
+    # df.dropna(inplace=True)
+    print (df)
+    writer = pd.ExcelWriter('output.xlsx')
+    df.to_excel(writer,'Sheet1')
+    writer.save()
+
+    break
+# visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
+#                             dataset.class_names, r['scores'], ax=ax,
+#                             title="Predictions")
+# log("gt_class_id", gt_class_id)
+# log("gt_bbox", gt_bbox)
+# log("gt_mask", gt_mask)
 
 
 
